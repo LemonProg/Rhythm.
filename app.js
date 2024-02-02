@@ -28,7 +28,7 @@ app.post('/download', (req, res) => {
     const title = req.body.title;
 
     ytdl(link, { filter: 'audioandvideo' })
-    .pipe(fs.createWriteStream(`public/output/${title}.mp4`).on('finish', () => {
+    .pipe(fs.createWriteStream(`./public/output/${title}.mp4`).on('finish', () => {
         res.send({"title": title})
     }))
 })
