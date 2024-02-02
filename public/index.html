@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#141414"/>
+    <title>Rhythm.</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body class="bg-[#141414]">
+    <audio></audio>
+
+    <section id="HomePage" class="min-h-screen flex flex-col place-content-center place-items-center">
+        <div class="flex flex-col place-items-center -mt-[100px]">
+            <img src="image/logo.svg" class="w-[177px]">
+            <div class="relative">
+                <input type="text" id="searchbar" class="mt-6 w-[282px] rounded-[14px] h-[40px] !outline-none font-montserrat font-extrabold pl-12">
+                <div class="absolute top-[50%] left-8 pl-4 flex items-center pointer-events-none" id="placeholder">
+                    <span class="font-montserrat font-extrabold pointer-events-none mr-1">Search</span>
+                    <span class="font-montserrat font-extrabold pointer-events-none bg-gradient-to-r from-[#FF5C00] via-[#AE76AE] to-[#0075FF] text-transparent bg-clip-text">Songs...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex fixed bottom-[90px] w-screen h-[43px] place-content-center place-items-center bg-[#262626] gap-5 z-50 hidden" id="currentlyPlayingHome">
+            <img class="w-[60px] h-[30px] object-cover" id="currentPlayingImage">
+            <h3 class="text-[9px] text-white font-montserrat font-normal w-[200px]" id="currentPlayingTitle"></h3>
+            
+            <div class="pt-3 pb-3 pr-5" id="pauseBtnHome">
+                <img src="image/pause.svg" class="ml-8" id="pauseImg">
+            </div>
+        </div>
+        <div class="fixed gap-24 flex bg-[#141414] bottom-4 pt-5 pb-5 pl-10 pr-10 z-0">
+            <button><img src="image/home.svg" alt="Home" id="homeBtn"></button>
+            <div class="bg-[#515151] w-1 h-[36px]"></div>
+            <button><img src="image/fav.svg" alt="Favorite" id="favBtn"></button>
+        </div>
+    </section>
+
+    <section id="LoadingPage" class="min-h-screen flex flex-col place-content-center place-items-center gap-5 hidden">
+        <img src="image/logo.svg" class="w-[177px]">
+        <img src="image/loading.gif" id="loadingImg" class="w-[50px]">
+    </section>
+
+    <section id="SearchPage" class="flex flex-col place-items-center hidden">
+        <div class="mt-[30px] m-4 p-1 rounded-[14px] max-w-sm bg-gradient-to-r from-[#FF5C00] via-[#AE76AE] to-[#0075FF]">
+            <input class="p-3 w-[282px] rounded-[11px] focus:outline-none font-montserrat font-extrabold pl-10" type="text" id="searchBarTOP">
+        </div>
+
+        <div id="allSongs" class="mt-5 flex flex-col gap-6 mb-[100px]"></div>
+
+        <div class="fixed gap-24 flex bg-[#141414] bottom-0 pt-5 pb-9 pl-10 pr-10 z-50">
+            <button><img src="image/home.svg" alt="Home" id="homeBtn"></button>
+            <div class="bg-[#515151] w-1 h-[36px]"></div>
+            <button><img src="image/fav.svg" alt="Favorite" id="favBtn"></button>
+        </div>
+    </section>
+
+    <section id=PlayerPage class="flex flex-col place-items-center min-h-screen gap-12 hidden">
+        <img src="image/logo.svg" class="w-[177px] mt-[50px]">
+
+        <div class="flex flex-col place-content-center w-[258px] gap-8 place-items-center">
+            <h1 class="text-center font-montserrat font-extrabold text-white text-[16px]" id="titlePlayer"></h1>
+
+            <div class="relative">
+                <img src="image/background-colors.png" id="imagePlayer" class="object-cover w-[258px] h-[258px]">
+                <img src="image/play_arrow.svg" class="absolute top-[45%] right-[46%] hidden pointer-events-none" id="pauseIndicator">
+            </div>
+
+            <div class="flex gap-1.5 place-items-center">
+                <span class="text-white font-montserrat font-extrabold text-[8px]" id="positionPlayer">0:00</span>
+                <div class="relative w-[211px] h-2 bg-white rounded-sm">
+                    <div class="absolute h-2 bg-gradient-to-r from-[#FF5C00] via-[#AE76AE] to-[#0075FF] rounded-sm" id="positionIndicator"></div>
+                </div>
+                <span class="text-white font-montserrat font-extrabold text-[8px]" id="durationPlayer">0:00</span>
+            </div>
+
+            <div class="flex w-[208px] h-[71px] bg-[#1F1F1F] rounded-[25px] place-content-center place-items-center gap-[44px]">
+                <img src="image/Heart.svg" alt="Like" id="likeBtn">
+                <img src="image/search.svg" alt="search" id="searchBtn">
+            </div>
+        </div>
+
+        <div class="fixed gap-24 flex bg-[#141414] bottom-4 pt-5 pb-5 pl-10 pr-10 z-50">
+            <button><img src="image/home.svg" alt="Home" id="homeBtn"></button>
+            <div class="bg-[#515151] w-1 h-[36px]"></div>
+            <button><img src="image/fav.svg" alt="Favorite" id="favBtn"></button>
+        </div>
+    </section>
+
+    <section id="FavoritePage" class="flex flex-col place-items-center place-content-center min-h-screen gap-5 hidden">
+        <img src="image/logo.svg" class="w-[177px]">
+        <h1 class="text-white font-montserrat font-extrabold text-[25px]">Comming Soon!</h1>
+
+        <div class="fixed gap-24 flex bg-[#141414] bottom-4 pt-5 pb-5 pl-10 pr-10 z-0">
+            <button><img src="image/home_grey.svg" alt="Home" id="homeBtn"></button>
+            <div class="bg-[#515151] w-1 h-[36px]"></div>
+            <button><img src="image/fav_white.svg" alt="Favorite"></button>
+        </div>
+    </section>
+</body>
+</html>
